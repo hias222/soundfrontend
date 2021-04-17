@@ -1,5 +1,10 @@
 // api/index.js
-var socket = new WebSocket('ws://192.168.178.174:8081/ws');
+// 'ws://192.168.178.174:8081/ws'
+var sslurl = 'wss://' + window.location.hostname + ":" + window.location.port + '/ws'
+
+var url = (process.env.REACT_APP_USER_URL === undefined) ?  sslurl :  process.env.REACT_APP_USER_URL
+
+var socket = new WebSocket(url);
 
 let connect = (cb) => {
   console.log("connecting")
